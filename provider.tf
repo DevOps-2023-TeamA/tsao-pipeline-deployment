@@ -14,6 +14,6 @@ provider "digitalocean" {
   token = var.do_token
 }
 
-data "digitalocean_ssh_key" "jiachen-ssh" {
-  name = "jiachen-ssh"
+data "digitalocean_ssh_key" "terraform" {
+  name = "jiachen-terraform"
 }
