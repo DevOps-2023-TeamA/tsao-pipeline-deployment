@@ -5,6 +5,16 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
+sudo apt update
+sudo apt install -y nginx
+sudo apt install -y mysql-server
+sudo apt install -y git golang
+
+sudo ufw allow 22/tcp
+sudo ufw allow 8000/tcp
+sudo ufw allow 8001/tcp
+sudo ufw allow 8002/tcp
+
 cd /
 
 # Clone DB repository

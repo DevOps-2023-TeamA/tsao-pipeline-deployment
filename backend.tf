@@ -34,7 +34,7 @@ resource "digitalocean_droplet" "backend" {
       "sudo ufw reload",
 
       # download the latest version of the backend script and execute
-      "curl -s https://raw.githubusercontent.com/DevOps-2023-TeamA/tsao-pipeline-deployment/main/setup-scripts/backend-setup.sh | bash -s " + file(var.secret_key)
+      "curl -s https://raw.githubusercontent.com/DevOps-2023-TeamA/tsao-pipeline-deployment/main/setup-scripts/backend-setup.sh | bash -s ${var.secret_key}"
     ]
   } 
 }
