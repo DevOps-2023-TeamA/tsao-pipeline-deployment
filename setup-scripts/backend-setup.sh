@@ -10,7 +10,7 @@ sudo apt install -y nginx
 sudo apt install -y mysql-server
 
 sudo rm -rf /usr/bin/go
-sudo snap install go
+sudo snap install go --classic
 
 sudo ufw allow 22/tcp
 sudo ufw allow 8000/tcp
