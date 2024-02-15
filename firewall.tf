@@ -32,6 +32,18 @@ resource "digitalocean_firewall" "app_firewall" {
 
   outbound_rule {
     protocol              = "tcp"
+    port_range            = "443"  # HTTPS default port
+    destination_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
+  outbound_rule {
+    protocol              = "tcp"
+    port_range            = "80"  # HTTP default port
+    destination_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
+  outbound_rule {
+    protocol              = "tcp"
     port_range            = "0"
     destination_addresses = ["0.0.0.0/0", "::/0"]
   }

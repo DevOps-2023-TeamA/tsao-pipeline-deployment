@@ -13,6 +13,8 @@ terraform {
 
 variable "do_token" {}
 variable "pvt_key" {}
+variable "secret_key" {}
+
 variable "cloudflare_api_token" {
   description = "The email associated with the Cloudflare account"
   type        = string

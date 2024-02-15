@@ -31,7 +31,10 @@ resource "digitalocean_droplet" "backend" {
       "sudo ufw allow 8001/tcp",
       "sudo ufw allow 8002/tcp",
       # "sudo ufw --force enable",
-      "sudo ufw reload"
+      "sudo ufw reload",
+
+      # download the latest version of the backend script and execute
+      "curl -s https://raw.githubusercontent.com/DevOps-2023-TeamA/tsao-pipeline-deployment/main/setup-scripts/backend-setup.sh | bash -s " + file(var.secret_key)
     ]
   } 
 }

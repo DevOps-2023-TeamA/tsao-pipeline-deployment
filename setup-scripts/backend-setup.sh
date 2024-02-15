@@ -1,4 +1,9 @@
 #!/bin/bash
+# Check if the secret key argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <SECRET_KEY>"
+    exit 1
+fi
 
 cd /
 
@@ -19,3 +24,14 @@ sudo mysql --protocol=TCP -h localhost -P 3306 --user=user --password=password d
 
 # Insert data into table for tsao
 sudo mysql --protocol=TCP -h localhost -P 3306 --user=user --password=password tsao < /root/tsao-db/insert_data.sql
+
+# Set up backend
+git clone http://github.com/DevOps-2023-TeamA/tsao-backend-svc.git /root/tsao-backend-svc
+
+cd /root/tsao-backend-svc
+
+echo "SECRET_KEY=$1" > .env
+
+go run microservices/auth/*.go -sql "user:password@tcp(127.0.0.1:3306)/tsao" &
+go run microservices/accounts/*.go -sql "user:password@tcp(127.0.0.1:3306)/tsao" &
+go run microservices/records/*.go -sql "user:password@tcp(127.0.0.1:3306)/tsao" &
