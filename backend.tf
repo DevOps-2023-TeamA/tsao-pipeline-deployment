@@ -2,7 +2,7 @@ resource "digitalocean_droplet" "backend" {
   image = "ubuntu-20-04-x64"
   name = "backend"
   region = "sgp1"
-  size = "s-1vcpu-1gb"
+  size = "s-1vcpu-2gb"
   ssh_keys = [
     data.digitalocean_ssh_key.terraform.id
   ]
