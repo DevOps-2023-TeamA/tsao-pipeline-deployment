@@ -43,6 +43,7 @@ git clone http://github.com/DevOps-2023-TeamA/tsao-backend-svc.git /root/tsao-ba
 cd /root/tsao-backend-svc
 
 echo "SECRET_KEY=$1" > .env
+cp .env /.env
 
 go run microservices/auth/*.go -sql "user:password@tcp(127.0.0.1:3306)/tsao" &
 go run microservices/accounts/*.go -sql "user:password@tcp(127.0.0.1:3306)/tsao" &
