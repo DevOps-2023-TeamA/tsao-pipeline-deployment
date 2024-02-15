@@ -9,10 +9,8 @@ sudo apt update
 sudo apt install -y nginx
 sudo apt install -y mysql-server
 
-curl -OL https://golang.org/dl/go1.16.7.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.0.linux-amd64.tar.gz
-
-export PATH=$PATH:/usr/local/go/bin
+sudo rm -rf /usr/bin/go
+sudo snap install go
 
 sudo ufw allow 22/tcp
 sudo ufw allow 8000/tcp
